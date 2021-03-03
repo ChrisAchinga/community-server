@@ -5,6 +5,7 @@ from ckeditor.fields import RichTextField
 # Tags
 class Tag(models.Model):
     name = models.CharField('Tag Name', max_length=100, unique=True)
+    cover_image = models.ImageField('Cover Photo', upload_to='images/', null=True, blank=True)
     slug = models.SlugField(max_length=100, unique=True)
     description = RichTextField('Tag Description')
 

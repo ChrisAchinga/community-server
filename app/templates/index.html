@@ -7,30 +7,6 @@ Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %
     <h2 class="page-section-heading text-center text-uppercase text-white">
       About Coast Woman
     </h2>
-
-    <!-- About Section Content-->
-    <div class="row">
-      <div class="col-lg-4 ml-auto">
-        <p class="lead">
-          The coast woman magazine is a periodical lifestyle magazine offering-a
-          hybrid mix of sublimely compelling imagery, descriptive copy, and
-          concise fact that has been carefully tailored to enthuse, encourage,
-          endorse and excite. Primarily a vehicle of promotion, it has been
-          designed to span the spectrum of international visitor appeal as well
-          as offering updates and insights of interest to locals and industry
-          alike.
-        </p>
-      </div>
-      <div class="col-lg-4 mr-auto">
-        <p class="lead">
-          Guaranteeing a holistic embrace of all aspects of the Coastal
-          experience in every issue it will be: information-driven; visually
-          stimulating; entirely unbiased; positive, proactive and upbeat;
-          culturally inclusive both in content and contribution; clear and
-          concise; ethically correct; and forward-looking.
-        </p>
-      </div>
-    </div>
     <!-- About Section Button-->
     <div class="text-center mt-4">
       <a class="btn btn-xl btn-outline-light" href="{% url 'magazine' %}">
@@ -144,7 +120,6 @@ Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %
       {% for article in featured_articles %}
       <div class="col">
         <div class="card shadow-sm">
-          
           <img
           src="{{article.image.url}}"
           class="card-img-top"
@@ -212,7 +187,7 @@ Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %
     <div class="row row-cols-1 row-cols-md-3 g-4">
       {% for tag in tags %}
       <div class="card mb-3" style="width: 18rem">
-        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <img src="{{tag.cover_image.url}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{tag.name}}</h5>
           <p class="card-text">{{tag.description | safe}}</p>

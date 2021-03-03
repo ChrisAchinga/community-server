@@ -1,17 +1,23 @@
 <!-- Side Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">AdSpace</h5>
-          <div class="card-body">
-            You can put anything you want inside of these side widgets. They
-            are easy to use, and feature the new Bootstrap 4 card containers!
-          </div>
-        </div>
 
-        <!-- Side Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">AdSpace</h5>
-          <div class="card-body">
-            You can put anything you want inside of these side widgets. They
-            are easy to use, and feature the new Bootstrap 4 card containers!
-          </div>
-        </div>
+{% for ad in small_add %}
+<div class="card" style="width: 18rem">
+  <img src="{{ad.image.url}}" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ad.name}}</h5>
+    <a href="{{ad.link}}" class="btn btn-primary">Visit {{ad.name}}</a>
+  </div>
+</div>
+{% endfor %}
+
+
+{% for Ad in large_add %}
+<div class="card" style="width: 18rem">
+  <img src="{{Ad.image.url}}" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{Ad.name}}</h5>
+    <a href="{{Ad.link}}" class="btn btn-primary">Visit {{ad.name}}</a>
+  </div>
+</div>
+{% endfor %}
+

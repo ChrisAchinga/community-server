@@ -15,7 +15,10 @@ def LandingPage(request):
 
 # about page view
 def AboutPage(request):
-    return render(request, 'about.html')
+    small_add = smallAdd.objects.all()
+    large_add = largeAdd.objects.all()
+    context = {'small_add':small_add, 'large_add':large_add}
+    return render(request, 'about.html', context)
 
 # view all Tags
 def TagList(request):
