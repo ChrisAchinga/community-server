@@ -1,5 +1,6 @@
 {% extends 'layouts/index.html' %} {% load static %} {% block title %} Coast
-Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %} {% include 'includes/main_header.html' %}
+Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %} 
+{% include 'includes/main_header.html' %}
 <!-- Call To Action-->
 <section class="page-section bg-primary text-white mb-0" id="about">
   <div class="container">
@@ -49,7 +50,7 @@ Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %
         {% for tag in tags %}
         <li>
           <a href="">{{tag.name}}</a>
-          </li>
+        </li>
         {% endfor %}
       </ul>
     </div>
@@ -120,17 +121,18 @@ Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %
       {% for article in featured_articles %}
       <div class="col">
         <div class="card shadow-sm">
-          <img
-          src="{{article.image.url}}"
-          class="card-img-top"
-          alt="..."
-        />
+          <img src="{{article.image.url}}" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">{{article.title}}</h5>
             <p class="card-text">{{article.body | slice:100 | safe}}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <a href="{% url 'article-read' article.slug %}" type="button" class="btn btn-outline-primary">Continue Reading</a>
+                <a
+                  href="{% url 'article-read' article.slug %}"
+                  type="button"
+                  class="btn btn-outline-primary"
+                  >Continue Reading</a
+                >
               </div>
               <small class="text-muted">{{article.date}}</small>
             </div>
@@ -143,6 +145,16 @@ Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %
     <!-- /.row -->
   </div>
   <!-- /.container -->
+</section>
+
+<section class="page-section" id="top-stories">
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        The Coast Woman Magazine Ad Space
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- News Updates sesion-->
@@ -187,11 +199,10 @@ Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %
     <div class="row row-cols-1 row-cols-md-3 g-4">
       {% for tag in tags %}
       <div class="card mb-3" style="width: 18rem">
-        <img src="{{tag.cover_image.url}}" class="card-img-top" alt="...">
+        <img src="{{tag.cover_image.url}}" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">{{tag.name}}</h5>
           <p class="card-text">{{tag.description | safe}}</p>
-          
         </div>
       </div>
       {% endfor %}
@@ -200,5 +211,24 @@ Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %
 </section>
 
 {% include 'includes/video.html' %}
+
+<div class="container">
+  <div class="row">
+    {% for ad in small_add %}
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="{{ad.image.url}}" class="card-img-top" alt="..." />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">{{ad.name}}</h5>
+          <div class="card-text text-black-50">
+            <a href="{{Ad.link}}" class="btn btn-primary">Visit {{ad.name}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- /.row -->
+</div>
 
 {% include 'includes/footer.html' %} {% endblock content %}
