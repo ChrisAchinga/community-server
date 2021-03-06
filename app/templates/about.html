@@ -1,5 +1,11 @@
-{% extends 'layouts/index.html' %} {% block title %} About Coast Woman 
-{% endblock %} {% block content %} {% include 'includes/nav.html' %}
+
+{% extends 'layouts/index.html' %} 
+{% load static %}
+{% block title %} About Coast Woman {% endblock %} 
+
+{% block content %} 
+
+{% include 'includes/nav.html' %}
 
 <header class="masthead" style="background-color: #ff00ff">
   <div class="overlay"></div>
@@ -14,6 +20,39 @@
     </div>
   </div>
 </header>
+
+<div class="container mt-3">
+<!-- Top CTA Item Row -->
+<div class="row">
+  <div class="col-md-8">
+    <img
+      class="img-fluid"
+      width="750"
+      height="300"
+      src="{% static 'img/cw-cover.png' %}"
+      alt=""
+    />
+  </div>
+
+  <div class="col-md-4">
+    <h3 class="my-3">The Coast Woman</h3>
+    <p>
+      The Coast Woman Magazine is a bimonthly magazine that highlights
+      succesful and influential women from the East African Coast. "Women
+      spreading their wings"
+    </p>
+    <h3 class="my-3">Tags</h3>
+    <ul class="list-unstyled">
+      {% for tag in tags %}
+      <li>
+        <a href="">{{tag.name}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>
+  
 
 <section id="about body-text">
   <div class="container">
