@@ -1,22 +1,24 @@
 <!-- Side Widget -->
 
 {% for ad in small_add %}
-<div class="card" style="width: 18rem">
-  <img src="{{ad.image.url}}" class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">{{ad.name}}</h5>
-    <a href="{{ad.link}}" class="btn btn-primary">Visit {{ad.name}}</a>
-  </div>
+<div class="card mb-2" style="width: 18rem">
+  <a href="{{ad.link}}" class="btn btn-primary bg-light text-dark">
+    <img src="{{ad.image.url}}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ad.name}}</h5>
+    </div>
+  </a>
 </div>
 {% endfor %}
 
 
 {% for Ad in large_add %}
 <div class="card" style="width: 18rem">
-  <img src="{{Ad.image.url}}" class="card-img-top" alt="..." />
+  <a href="{{Ad.link}}" class="btn btn-primary bg-light text-dark">
+    <img src="{{Ad.image.url}}" class="card-img-top" alt="..." />
   <div class="card-body">
     <h5 class="card-title">{{Ad.name}}</h5>
-    <a href="{{Ad.link}}" class="btn btn-primary">Visit {{ad.name}}</a>
   </div>
+  </a>
 </div>
 {% endfor %}

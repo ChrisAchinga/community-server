@@ -169,7 +169,7 @@ sup {
 a {
   color: #FF00FF;
   text-decoration: none;
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 a:hover {
   color: #FF00FF;

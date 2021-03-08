@@ -29,9 +29,9 @@ def TagList(request):
     return render(request, 'tags/list.html', context)
 
 # view tag
-# def TagDetail(request, pk):
-#     tags = Tag.objects.get(id=pk)
-#     return render(request, 'tags/details.html')
+class TagDetail(generic.DetailView):
+    model = News
+    template_name = 'tags/details.html'
 
 # view all magazine issue
 def MagazineList(request):

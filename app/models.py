@@ -16,6 +16,14 @@ class Tag(models.Model):
     def __str__(self):
        return self.name
 
+    @property
+    def imageURL(self):
+        try:
+            url = self.cover_image.url
+        except:
+            url = ''
+        return url
+
 # magazine issue    
 class Magazine(models.Model):
     name = models.CharField('Magazine Issue Name', max_length=100, unique=True)
