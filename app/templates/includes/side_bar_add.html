@@ -1,0 +1,14 @@
+<!-- Side Widget -->
+
+{% for ad in small_add %}
+<a href="{{ad.link}}" class="btn btn-primary bg-light text-dark p-0 mb-2">
+  <img src="{{ad.image.url}}" class="img-thumbnail" alt="{{ad.name}}" />
+</a>
+{% endfor %} 
+
+
+{% for Ad in large_add %}
+<a href="{{Ad.link}}" class="btn btn-primary bg-light text-dark p-0 mt-1">
+  <img src="{{Ad.image.url}}" class="img-thumbnail" alt="{{Ad.name}}" />
+</a>
+{% endfor %}

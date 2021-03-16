@@ -1,0 +1,157 @@
+{% extends 'layouts/index.html' %} {% load static %} {% block title %} Coast
+Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %} {% include 'includes/main_header.html' %}
+<!-- Call To Action-->
+
+
+<!-- main tals -->
+<div class="container">
+  <!-- Portfolio Item Heading -->
+  <h1 class="my-4">
+    Coast Woman
+    <small>Women Spreading Their Wings</small>
+  </h1>
+
+  
+
+  <!-- Related Projects Row -->
+  <h3 class="my-4">Top Pics</h3>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-right">
+      <a href="#">
+        <img
+          class="img-fluid"
+          style="object-fit: cover"
+          src="{% static 'img/cw/001.png' %}"
+          alt=""
+        />
+      </a>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-right">
+      <a href="#">
+        <img
+          class="img-fluid"
+          style="object-fit: cover"
+          src="{% static 'img/cw/005.png' %}"
+          alt=""
+        />
+      </a>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-right">
+      <a href="#">
+        <img
+          class="img-fluid"
+          style="object-fit: cover"
+          src="{% static 'img/cw/008.png' %}"
+          alt=""
+        />
+      </a>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-right">
+      <a href="#">
+        <img
+          class="img-fluid"
+          style="object-fit: cover"
+          src="{% static 'img/cw/015.png' %}"
+          alt=""
+        />
+      </a>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>
+
+
+<!-- News Updates sesion-->
+<!-- News Updates sesion-->
+<section class="page-section" id="about">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">News Updates</h2>
+      <h3 class="section-subheading text-muted">
+        Catch What's happening Now on Updates
+      </h3>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for new in news %}
+        <div class="col">
+        <div class="card m-3">
+          <img src="{{new.image.url}}" class="card-img-top" alt="..." style="height: 100%; width: 100%; object-fit: cover;" />
+          <div class="card-body">
+            <a href="{% url 'news-read' new.slug %}" class="stretched-link text-dark text-decoration-none">
+              <h5 class="card-title">{{new.title}}</h5>
+              <p class="card-text">{{new.description | slice:100 | safe}}</p>
+            </a>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">{{new.date}}</small>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Featured Articles -->
+<section class="page-section" id="top-stories">
+  <div class="container">
+    <!-- Page Heading -->
+    <h1 class="my-4">
+      Featured Articles
+      <small class="body-text">By Coast Woman</small>
+    </h1>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for article in featured_articles %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img
+          src="{{article.image.url}}"
+          class="card-img-top"
+          alt="..."
+          style="height: 100%; width: 100%; object-fit: cover;"
+        />
+        <a href="{% url 'article-read' article.slug %}" class="stretched-link text-dark text-decoration-none">
+          <div class="card-body">
+            <h5 class="card-title">{{article.title}}</h5>
+            <p class="card-text">{{article.body | slice:100 | safe}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">{{article.date}}</small>
+            </div>
+          </div>
+        </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+</section>
+
+
+{% include 'includes/video.html' %}
+
+<div class="container">
+  <div class="row">
+    {% for ad in small_add %}
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="{{ad.image.url}}" class="card-img-top" alt="..." />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">{{ad.name}}</h5>
+          
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- /.row -->
+</div>
+
+{% include 'includes/footer.html' %} {% endblock content %}
