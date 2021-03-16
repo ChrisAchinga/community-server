@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,10 +10,10 @@
     <meta name="author" content="" />
     <title>About Coast Woman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/vendor.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/modernizr.js"></script>
-    <script defer src="js/fontawesome/all.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/new-styles.css' %}" />
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script defer src="{% static 'js/fontawesome/all.min.js' %}"></script>
   </head>
   <body id="top">
     <!-- loader -->
@@ -24,7 +25,7 @@
     <header class="s-header s-header--opaque">
       <div class="s-header__logo">
         <a class="logo" href="index.html">
-          <img src="images/logo.svg" alt="Homepage" />
+          <img src="{% static 'img/cwname.png' %}" alt="CoastWoman Magazine" />
         </a>
       </div>
 
@@ -33,34 +34,10 @@
           <h3 class="s-header__nav-heading h6">Navigate to</h3>
 
           <ul class="s-header__nav">
-            <li><a href="index.html" title="">Home</a></li>
-            <li class="has-children">
-              <a href="#0" title="">Categories</a>
-              <ul class="sub-menu">
-                <li><a href="category.html">Design</a></li>
-                <li><a href="category.html">Lifestyle</a></li>
-                <li><a href="category.html">Photography</a></li>
-                <li><a href="category.html">Vacation</a></li>
-                <li><a href="category.html">Work</a></li>
-                <li><a href="category.html">Health</a></li>
-                <li><a href="category.html">Family</a></li>
-                <li><a href="category.html">Relationship</a></li>
-              </ul>
-            </li>
-            <li class="has-children">
-              <a href="#0" title="">Blog</a>
-              <ul class="sub-menu">
-                <li><a href="single-video.html">Video Post</a></li>
-                <li><a href="single-audio.html">Audio Post</a></li>
-                <li><a href="single-standard.html">Standard Post</a></li>
-              </ul>
-            </li>
-            <li><a href="styles.html" title="">Styles</a></li>
-            <li class="current"><a href="about.html" title="">About</a></li>
-            <li><a href="contact.html" title="">Contact</a></li>
+            <li><a href="{% url 'home' %}" title="">Home</a></li>
+            <li class="current"><a href="{% url 'articles' %}" title="">Articles</a></li>
+            <li><a href="{% url 'news' %}" title="">News</a></li>
           </ul>
-          <!-- end s-header__nav -->
-
           <a
             href="#0"
             title="Close Menu"
@@ -68,60 +45,10 @@
             >Close</a
           >
         </nav>
-        <!-- end s-header__nav-wrap -->
       </div>
-      <!-- end s-header__navigation -->
-
       <a class="s-header__toggle-menu" href="#0" title="Menu"
         ><span>Menu</span></a
       >
-
-      <div class="s-header__search">
-        <div class="s-header__search-inner">
-          <div class="row wide">
-            <form
-              role="search"
-              method="get"
-              class="s-header__search-form"
-              action="#"
-            >
-              <label>
-                <span class="h-screen-reader-text">Search for:</span>
-                <input
-                  type="search"
-                  class="s-header__search-field"
-                  placeholder="Search for..."
-                  value=""
-                  name="s"
-                  title="Search for:"
-                  autocomplete="off"
-                />
-              </label>
-              <input
-                type="submit"
-                class="s-header__search-submit"
-                value="Search"
-              />
-            </form>
-
-            <a href="#0" title="Close Search" class="s-header__overlay-close"
-              >Close</a
-            >
-          </div>
-          <!-- end row -->
-        </div>
-        <!-- s-header__search-inner -->
-      </div>
-      <!-- end s-header__search wrap -->
-
-      <a class="s-header__search-trigger" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.982 17.983">
-          <path
-            fill="#010101"
-            d="M12.622 13.611l-.209.163A7.607 7.607 0 017.7 15.399C3.454 15.399 0 11.945 0 7.7 0 3.454 3.454 0 7.7 0c4.245 0 7.699 3.454 7.699 7.7a7.613 7.613 0 01-1.626 4.714l-.163.209 4.372 4.371-.989.989-4.371-4.372zM7.7 1.399a6.307 6.307 0 00-6.3 6.3A6.307 6.307 0 007.7 14c3.473 0 6.3-2.827 6.3-6.3a6.308 6.308 0 00-6.3-6.301z"
-          />
-        </svg>
-      </a>
     </header>
     <!-- end s-header -->
 
@@ -133,104 +60,54 @@
           <article class="s-content__entry">
             <div class="s-content__media">
               <img
-                src="images/thumbs/about/about-1050.jpg"
-                srcset="
-                  images/thumbs/about/about-2100.jpg 2100w,
-                  images/thumbs/about/about-1050.jpg 1050w,
-                  images/thumbs/about/about-525.jpg   525w
-                "
-                sizes="(max-width: 2100px) 100vw, 2100px"
+                src="{% static 'img/cw-cover.png' %}"
                 alt=""
               />
             </div>
             <!-- end s-content__media -->
 
             <div class="s-content__entry-header">
-              <h1 class="s-content__title">Learn More About Story.</h1>
+              <h1 class="s-content__title">Women Spreading Their Wings.</h1>
             </div>
             <!-- end s-content__entry-header -->
-
             <div class="s-content__primary">
               <div class="s-content__page-content">
                 <p class="lead">
-                  Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat
-                  nostrud cupidatat dolor sunt sint sit nisi est eu exercitation
-                  incididunt adipisicing veniam velit id fugiat enim mollit amet
-                  anim veniam dolor dolor irure velit commodo cillum sit nulla
-                  ullamco magna amet magna cupidatat qui labore cillum sit in
-                  tempor veniam consequat non laborum adipisicing aliqua ea nisi
-                  sint ut quis proident ullamco ut dolore culpa occaecat ut
-                  laboris in sit minim cupidatat ut dolor voluptate enim veniam
-                  consequat occaecat fugiat in adipisicing in amet Ut nulla nisi
-                  non ut enim aliqua laborum mollit quis nostrud sed sed.
-                </p>
-
-                <p>
-                  Lorem ipsum Nisi cillum reprehenderit minim sunt dolore dolor
-                  eiusmod eu aliquip ad ut sint dolore laborum voluptate ullamco
-                  dolore aliquip enim. Excepteur cillum cupidatat fugiat nostrud
-                  cupidatat dolor sunt sint sit nisi est eu exercitation
-                  incididunt adipisicing
-                </p>
-
-                <p>
-                  Lorem ipsum Cillum sit sunt dolore non aute enim pariatur
-                  deserunt magna reprehenderit veniam officia ullamco eiusmod
-                  laborum commodo veniam elit proident enim sit cillum ex
-                  aliquip dolore labore sint ut deserunt officia veniam
-                  consectetur in in quis eu consectetur non sint Duis mollit Ut
-                  magna irure.
+                  The coast woman magazine is a periodical lifestyle magazine offering-a hybrid mix of sublimely compelling imagery, descriptive copy, and concise fact that has been carefully tailored to enthuse, encourage, endorse and excite. Primarily a vehicle of promotion, it has been designed to span the spectrum of international visitor appeal as well as offering updates and insights of interest to locals and industry alike. Guaranteeing a holistic embrace of all aspects of the Coastal experience in every issue it will be: information-driven; visually stimulating; entirely unbiased; positive, proactive and upbeat; culturally inclusive both in content and contribution; clear and concise; ethically correct; and forward-looking. 
                 </p>
 
                 <br />
 
-                <div
-                  class="row block-large-1-2 block-tab-full s-content__blocks"
-                >
+               
+                <div class="row block-large-1-2 block-tab-full s-content__blocks">
                   <div class="column">
-                    <h4>Who.</h4>
-                    <p>
-                      Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut
-                      nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu
-                      mollit nisi pariatur fugiat deserunt dolor veniam
-                      reprehenderit aliquip magna nisi consequat aliqua veniam
-                      in aute ullamco Duis laborum ad non pariatur sit.
-                    </p>
+                      <h4>Who.</h4>
+                      <p>
+                        The Coast Woman Magazine is a bimonthly magazine that highlights succesful and influential women from the East African Coast. "Women spreading their wings" 
+                      </p>
                   </div>
 
                   <div class="column">
-                    <h4>When.</h4>
-                    <p>
-                      Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut
-                      nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu
-                      mollit nisi pariatur fugiat deserunt dolor veniam
-                      reprehenderit aliquip magna nisi consequat aliqua veniam
-                      in aute ullamco Duis laborum ad non pariatur sit.
-                    </p>
+                      <h4>Contacts.</h4>
+                      <p>
+                      Email us at info@coastwoman.co.ke
+                      </p>
                   </div>
 
                   <div class="column">
-                    <h4>What.</h4>
-                    <p>
-                      Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut
-                      nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu
-                      mollit nisi pariatur fugiat deserunt dolor veniam
-                      reprehenderit aliquip magna nisi consequat aliqua veniam
-                      in aute ullamco Duis laborum ad non pariatur sit.
-                    </p>
+                      <h4>Read...</h4>
+                      <p>
+                      Find latest news on what's happening arround the coast and read our latest articles.
+                      </p>
                   </div>
 
                   <div class="column">
-                    <h4>How.</h4>
-                    <p>
-                      Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut
-                      nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu
-                      mollit nisi pariatur fugiat deserunt dolor veniam
-                      reprehenderit aliquip magna nisi consequat aliqua veniam
-                      in aute ullamco Duis laborum ad non pariatur sit.
-                    </p>
+                      <h4>How.</h4>
+                      <p>
+                      Purchase our latest magazine online
+                      </p>
                   </div>
-                </div>
+
               </div>
               <!-- end s-entry__page-content -->
             </div>
@@ -247,13 +124,10 @@
       <div class="s-footer__main">
         <div class="row">
           <div class="column large-3 medium-6 tab-12 s-footer__info">
-            <h5>About Our Site</h5>
+            <h5>About CoastWoman</h5>
 
             <p>
-              Lorem ipsum Ut velit dolor Ut labore id fugiat in ut fugiat
-              nostrud qui in dolore commodo eu magna Duis cillum dolor officia
-              esse mollit proident Excepteur exercitation nulla. Lorem ipsum In
-              reprehenderit commodo aliqua irure.
+              The coast woman magazine is a periodical lifestyle magazine offering-a hybrid mix of sublimely compelling imagery, descriptive copy, and concise fact that has been carefully tailored to enthuse, encourage, endorse and excite.
             </p>
           </div>
           <!-- end s-footer__info -->
@@ -262,10 +136,10 @@
             <h5>Site Links</h5>
 
             <ul>
-              <li><a href="#0">About Us</a></li>
-              <li><a href="#0">Blog</a></li>
-              <li><a href="#0">FAQ</a></li>
-              <li><a href="#0">Terms</a></li>
+              <li><a href="{% url 'about' %}">About Us</a></li>
+              <li><a href="{% url 'articles' %}">Articles</a></li>
+              <li><a href="{% url 'news' %}">News</a></li>
+              <li><a href="#0">Purchase an Issue</a></li>
               <li><a href="#0">Privacy Policy</a></li>
             </ul>
           </div>
@@ -275,11 +149,9 @@
             <h5>Follow Us</h5>
 
             <ul>
-              <li><a href="#0">Twitter</a></li>
-              <li><a href="#0">Facebook</a></li>
-              <li><a href="#0">Dribbble</a></li>
-              <li><a href="#0">Pinterest</a></li>
-              <li><a href="#0">Instagram</a></li>
+              <li><a href="https://twitter.com/coast_woman">Twitter</a></li>
+              <li><a href="https://www.facebook.com/coastwomanmagazine/">Facebook</a></li>
+              <li><a href="https://www.instagram.com/thecoastwomanmagazine">Instagram</a></li>
             </ul>
           </div>
           <!-- end s-footer__social links -->
@@ -317,11 +189,11 @@
         <div class="row">
           <div class="column">
             <div class="ss-copyright">
-              <span>© Copyright Calvin 2020</span>
-              <span
+              <span>© Copyright Coastwoman 2021</span>
+              <!-- <span
                 >Design by
-                <a href="https://www.styleshout.com/">StyleShout</a></span
-              >
+                <a href="https://www.chrisdev.netlify.app/">Chris</a></span
+              > -->
             </div>
             <!-- end ss-copyright -->
           </div>
@@ -348,8 +220,8 @@
       <!-- end s-footer__bottom -->
     </footer>
     <!-- end s-footer -->
-    <script src="js/jquery-3.5.0.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
