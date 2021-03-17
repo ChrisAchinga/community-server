@@ -65,7 +65,7 @@ def AllArticlesPage(request):
 # article page view
 class ArticleReadView(generic.DetailView):
     model = Article
-    template_name = 'articles/read.html'
+    template_name = 'articles/new_read.html'
 
 # view all images
 def ImageList(request):
@@ -84,6 +84,7 @@ def Pricing(request):
 
 
 # test pages views
+
 # view all articles view
 def ArticleList(request):
     small_add = smallAdd.objects.all()
@@ -92,3 +93,22 @@ def ArticleList(request):
     articles = Article.objects.all()
     context = {'articles':articles, 'tags':tags, 'small_add':small_add, 'large_add':large_add}
     return render(request, 'articles/new_list.html', context)
+
+
+# article page view
+def ArticleView(request):
+    small_add = smallAdd.objects.all()
+    large_add = largeAdd.objects.all()
+    tags = Tag.objects.all()[:5]
+    articles = Article.objects.all()
+    context = {'articles':articles, 'tags':tags, 'small_add':small_add, 'large_add':large_add}
+    return render(request, 'articles/new_read.html', context)
+
+# view all news
+def NewsList(request):
+    small_add = smallAdd.objects.all()
+    large_add = largeAdd.objects.all()
+    tags = Tag.objects.all()[:5]
+    news = News.objects.all()
+    context = {'news':news, 'tags':tags, 'small_add':small_add, 'large_add':large_add}
+    return render(request, 'news/new_list.html', context)

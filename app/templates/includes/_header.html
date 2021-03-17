@@ -1,0 +1,29 @@
+{% load static %}
+<header class="s-header s-header--opaque">
+  <div class="s-header__logo">
+    <a class="s-header__nav" style="color: aliceblue;" href="{% url 'home' %}">
+      Coast Woman 
+    </a>
+  </div>
+
+  <div class="row s-header__navigation">
+    <nav class="s-header__nav-wrap">
+      <h3 class="s-header__nav-heading h6">Navigate to</h3>
+
+      <ul class="s-header__nav">
+        <li><a href="{% url 'home' %}" title="">Home</a></li>
+        <li class="current">
+          <a href="{% url 'articles' %}" title="">Articles</a>
+        </li>
+        <li><a href="{% url 'news' %}" title="">News</a></li>
+      </ul>
+      <a
+        href="#0"
+        title="Close Menu"
+        class="s-header__overlay-close close-mobile-menu"
+        >Close</a
+      >
+    </nav>
+  </div>
+  <a class="s-header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+</header>

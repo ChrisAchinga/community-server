@@ -72,6 +72,7 @@ class News(models.Model):
     news_feature = models.CharField('Article Feature', choices=NEWS_FEATURE, max_length=20, help_text='News to be featured on home page')
 
     class Meta:
+        ordering = ['-date']
         verbose_name = 'News Updates'
         verbose_name_plural = verbose_name
 
@@ -109,6 +110,7 @@ class Article(models.Model):
     body = RichTextField('Article Body', null=False, blank=False)
 
     class Meta:
+        ordering = ['-date']
         verbose_name = 'Articles'
         verbose_name_plural = verbose_name
 

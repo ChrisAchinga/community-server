@@ -23,4 +23,5 @@ urlpatterns = [
 
     # test urls
     path('articles/all', views.ArticleList, name='all-articles'),
+    path('news/all', views.NewsList, name='all-news'),
 ]
