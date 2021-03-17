@@ -1,81 +1,129 @@
-{% extends 'layouts/index.html' %} {% load static %} {% block title %} Coast
-Woman | News Updates {% endblock %} {% block content %}
-<!-- navbar -->
-{% include 'includes/nav.html' %}
-
-<!-- Page Header -->
-<header class="masthead" style="background-color: #FF00FF">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-heading">
-          <h1>News Updates</h1>
-          <!-- <h2 class="subheading"></h2> -->
-          <span class="meta"
-            >Coast Woman News Updates</span
-          >
-        </div>
-      </div>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Updates & News</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/new-styles.css' %}" />
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script defer src="{% static 'js/fontawesome/all.min.js' %}"></script>
+  </head>
+  <body id="top">
+    <!-- preloader -->
+    <div id="preloader">
+      <div id="loader"></div>
     </div>
-  </div>
-</header>
-
-  <div class="container">
-    <div class="row">
-      <!-- Blog Entries Column -->
-      <div class="col-md-8">
-        <h1 class="my-4">
-          The Coast Woman
-          <small>Daily News Updates</small>
-        </h1>
-
-        
-        {% for new in news %}
-          <div class="card mb-4">
-          <img
-            class="card-img-top"
-            src="{{new.image.url}}"
-            alt="News Image Cover"
-            width="750" 
-            height="300"
-          />
-          <div class="card-body">
-            <h2 class="card-title">{{new.title}}</h2>
-            <p class="card-text">
-              {{new.Description}}
-            </p>
-            <a href="{% url 'news-read' new.slug %}" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on {{new.date}} by
-            <a href="#">{{new.author.first_name}}  {{new.author.last_name}}</a>
+    {% include 'includes/_header.html' %}
+    <section class="s-content">
+     
+      <div class="s-pageheader">
+        <div class="row">
+          <div class="column large-12">
+            <h1 class="page-title">
+              <span class="page-title__small-type">Coast Woman Magazine</span>
+              Latest News & Updates
+            </h1>
           </div>
         </div>
-        {% endfor %}
-          
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
       </div>
+      <!-- end s-pageheader-->
+      <!-- masonry
+        ================================================== -->
+        <div class="s-bricks s-bricks--half-top-padding">
 
-      <!-- Sidebar Widgets Column -->
-      <div class="col-md-4">
-        <!-- Search Widget -->
-        <!-- Tags Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Tags</h5>
-        </div>
-        {% include 'includes/side_bar_add.html' %}
-      </div>
-    </div>
-    <!-- /.row -->
-  </div>
-{% include 'includes/footer.html' %} {% endblock %}
+            <div class="masonry">
+                <div class="bricks-wrapper h-group">
 
+                    <div class="grid-sizer"></div>
+
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    
+                    {% for new in news %}
+                    <article class="brick entry" data-aos="fade-up">
+    
+                        <div class="entry__thumb">
+                            <a href="{% url 'news-read' new.slug %}" class="thumb-link">
+                                <img src="{{new.image.url}}" alt="">
+                            </a>
+                        </div> <!-- end entry__thumb -->
+    
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h1 class="entry__title"><a href="{% url 'news-read' new.slug %}">{{new.title}}</a></h1>
+                                
+                                <div class="entry__meta">
+                                    <span class="byline">Posted on 
+                                        <span class='author'>
+                                            {{new.date}} by
+                                    </span>
+                                </span>
+                                    <span class="cat-links">
+                                        <a href="{% url 'news-read' new.slug %}">{{new.author.first_name}}  {{new.author.last_name}}</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                    {{new.Description}}
+                                </p>
+                            </div>
+                            <a class="entry__more-link" href="{% url 'news-read' new.slug %}">Full Story</a>
+                        </div> <!-- end entry__text -->
+                    
+                    </article> <!-- end article -->
+                    {% endfor %}
+                   
+
+
+                </div> <!-- end brick-wrapper -->
+
+            </div> <!-- end masonry -->
+
+            <div class="row">
+                <div class="column large-12">
+                    <nav class="pgn">
+                        <ul>
+                            <li>
+                                <span class="pgn__prev" href="#0">
+                                    Prev
+                                </span>
+                            </li>
+                            <li><a class="pgn__num" href="#0">1</a></li>
+                            <li><span class="pgn__num current">2</span></li>
+                            <li><a class="pgn__num" href="#0">3</a></li>
+                            <li><a class="pgn__num" href="#0">4</a></li>
+                            <li><a class="pgn__num" href="#0">5</a></li>
+                            <li><span class="pgn__num dots">…</span></li>
+                            <li><a class="pgn__num" href="#0">8</a></li>
+                            <li>
+                                <span class="pgn__next" href="#0">
+                                    Next
+                                </span>
+                            </li>
+                        </ul>
+                    </nav> <!-- end pgn -->
+                </div> <!-- end column -->
+            </div> <!-- end row -->
+
+        </div> <!-- end s-bricks -->
+    </section>
+    
+    {% include 'includes/_footer.html' %}
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+  </body>
+</html>

@@ -1,89 +1,148 @@
-{% extends 'layouts/index.html' %} {% load static %} {% block title %} Coast
-Woman | {{news.title}} {% endblock %} {% block content %}
-<!-- navbar -->
-{% include 'includes/nav.html' %}
+{% load static %}
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('{{news.image.url}}')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto header-text bg-primary">
-        <div class="post-heading">
-          <h1>{{news.title}}</h1>
-          <!-- <h2 class="subheading"></h2> -->
-          <span class="meta"
-            >Posted by
-            <a href="#">{{news.author.first_name}} {{news.author.last_name}}</a>
-            on {{news.date}}</span
-          >
-        </div>
-      </div>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Coast Woman | {{news.title}}</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new-styles.css' %}">
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script defer src="{% static 'js/fontawesome/all.min.js' %}"></script>
+
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader"> 
+    	<div id="loader"></div>
     </div>
-  </div>
-</header>
 
-  <!-- Page Content -->
-  <div class="container">
 
-    <div class="row">
+    {% include 'includes/_header.html' %}
 
-      <!-- Post Content Column -->
-      <div class="col-lg-8">
 
-        <!-- Title -->
-        <h1 class="mt-4">{{news.title}}</h1>
+    <!-- content
+    ================================================== -->
+    <section class="s-content">
 
-        <!-- Author -->
-        <p class="lead">
-          by
-          <a href="#">{{news.author.first_name}} {{news.author.last_name}}</a>
-        </p>
+        <div class="row">
+            <div class="column large-12">
 
-        <hr>
+                <article class="s-content__entry format-standard">
 
-        <!-- Date/Time -->
-        <p>Posted on {{news.date}}</p>
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb">
+                            <img src="{{news.image.url}}" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
 
-        <hr>
+                    <div class="s-content__entry-header">
+                        <h1 class="s-content__title s-content__title--post">{{news.title}}</h1>
+                    </div> <!-- end s-content__entry-header -->
 
-        <!-- Preview Image -->
-        <img class="img-fluid rounded" src="{{news.image.url}}" width="900" 
-            height="300" alt="image cover">
+                    <div class="s-content__primary">
 
-        <hr>
+                        <div class="s-content__entry-content">
 
-        <!-- Post Content -->
-        <p class="lead body-font">
-          
-        </p>
-        <blockquote class="blockquote">
-          <p class="mb-0">{{news.description | safe}}</p>
-          
-        </blockquote>
+                            <p class="lead">
+                              {{news.description | safe}}
+                            </p> 
+    
+                            <p>
+                                {{news.body | safe}}
+                            </p>
 
-        <p>
-        {{news.body | safe}}
-        </p>
-        <hr>
+                            <p>
+                                <img src="{{news.image.url}}" alt="">
+                            </p>
+                        </div> <!-- end s-entry__entry-content -->
 
-      </div>
+                        <!-- left side  -->
+                        <div class="s-content__entry-meta">
 
-      <!-- Sidebar Widgets Column -->
-      <div class="col-md-4">
-        <!-- Search Widget -->
-        <!-- Tags Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Tags</h5>
-          {% include 'includes/tags.html' %}
-        </div>
-        {% include 'includes/side_bar_add.html' %}
-      </div>
+                            <div class="entry-author meta-blk">
+                                <div class="author-avatar">
+                                    <img class="avatar" src="images/avatars/user-06.jpg" alt="">
+                                </div>
+                                <div class="byline">
+                                    <span class="bytext">Posted By</span>
+                                    <a href="#">{{news.author.first_name}} {{news.author.last_name}}</a>
+                                </div>
+                            </div>
 
-    </div>
-    <!-- /.row -->
+                            
+                            <div class="meta-bottom">
+                                
+                                <div class="entry-cat-links meta-blk">
+                                    <div class="cat-links">
+                                        <span>In</span> 
+                                        <p>Cover Stories</p>
+                                    </div>
 
-  </div>
+                                    <span>On</span>
+                                    {{news.date}}
+                                </div>
 
-{% include 'includes/footer.html' %} {% endblock %}
+                                <!-- <div class="entry-tags meta-blk">
+                                    <span class="tagtext">Adspace</span>
+                                    <p>Text Add</p>
+                                </div> -->
 
+                            </div>
+
+                        </div> <!-- s-content__entry-meta -->
+
+                        <!-- article read add space -->
+                        <!-- <div class="s-content__pagenav">
+                            <div class="prev-nav">
+                                <a href="#" rel="prev">
+                                    <span>Adspace</span>
+                                    Tips on Minimalist Design 
+                                </a>
+                            </div>
+                            <div class="next-nav">
+                                <a href="#" rel="next">
+                                    <span>Adspace</span>
+                                    A Practical Guide to a Minimalist Lifestyle.
+                                </a>
+                            </div>
+                         </div>  -->
+
+                    </div> <!-- end s-content__primary -->
+                </article> <!-- end entry -->
+
+            </div> <!-- end column -->
+        </div> <!-- end row -->
+    </section> <!-- end s-content -->
+
+
+   {% include 'includes/_footer.html' %}
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
