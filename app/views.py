@@ -26,11 +26,6 @@ def TagList(request):
     context = {'tags':tags, 'small_add':small_add, 'large_add':large_add}
     return render(request, 'tags/list.html', context)
 
-# view tag
-class TagDetail(generic.DetailView):
-    model = News
-    template_name = 'tags/details.html'
-
 # view all magazine issue
 def MagazineList(request):
     small_add = smallAdd.objects.all()
@@ -112,3 +107,18 @@ def NewsList(request):
     news = News.objects.all()
     context = {'news':news, 'tags':tags, 'small_add':small_add, 'large_add':large_add}
     return render(request, 'news/new_list.html', context)
+
+def TagView(request, pk):
+    tag_posts = Article.objects.get(id=pk)
+    context = {'tag_posts':tag_posts}
+    return render(request, 'tags/details.html', context)
+
+# landing page view
+def TestLanding(request):
+    small_add = smallAdd.objects.all()
+    large_add = largeAdd.objects.all()
+    tags = Tag.objects.all()[:5]
+    featured_articles = Article.objects.filter(article_feature='featured').order_by('-date')
+    news = News.objects.filter(news_feature='featured').order_by('-date')
+    context = {'tags':tags, 'featured_articles':featured_articles, 'news':news, 'small_add':small_add, 'large_add':large_add}
+    return render(request, 'new_index.html', context)

@@ -29,7 +29,7 @@ admin.site.register(News, NewsAdmin)
 
 # Article admin
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'magazine', 'author',)
+    list_display = ('title', 'magazine', 'author', 'tag')
     search_fields = ['title']
     prepopulated_fields = {'slug': ('title',)}
 admin.site.register(Article, ArticleAdmin)
