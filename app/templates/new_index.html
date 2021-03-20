@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,6 +12,7 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="{% static 'css/new-styles.css' %}" />
     <style>
       .carousel-item {
         height: 65vh;
@@ -25,41 +27,7 @@
   </head>
   <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    {% include 'includes/_header.html' %}
 
     <header>
       <div
@@ -98,7 +66,9 @@
           >
             <div class="carousel-caption d-none d-md-block">
               <h3 class="display-4">Second Slide</h3>
-              <p class="lead">This is a description for the second slide.</p>
+              <p class="lead mt-0">
+                This is a description for the second slide.
+              </p>
             </div>
           </div>
         </div>
@@ -124,15 +94,698 @@
     </header>
     <!-- Page Content -->
     <section class="py-5">
+      <!-- top text -->
       <div class="container">
-        <h1 class="font-weight-light">Half Page Image Slider</h1>
-        <p class="lead">
-          The background images for the slider are set directly in the HTML
-          using inline CSS. The images in this snippet are from
-          <a href="https://unsplash.com">Unsplash</a>!
-        </p>
+        <div class="text-center">
+          <a href="{% url 'news' %}"
+            ><h2 class="section-heading text-uppercase">News Updates</h2></a
+          >
+          <h3 class="section-subheading text-muted">
+            Catch What's happening Now on Updates
+          </h3>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div class="container mt-3">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+          <div class="col-md-8">
+            <img class="img-fluid" src="http://placehold.it/750x400" alt="" />
+          </div>
+          <div class="col-md-4">
+            <h3 class="my-3">Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              viverra euismod odio, gravida pellentesque urna varius vitae. Sed
+              dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris
+              ultricies, justo eu convallis placerat, felis enim.
+            </p>
+          </div>
+        </div>
+        <!-- Related Projects Row -->
+        <div class="row">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This card has supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This card has even longer
+                    content than the first to show that equal height action.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <!-- ad section -->
+    <section class="container">
+      <div class="card border-0">
+        <img
+          src="https://source.unsplash.com/oRs6zblNSCs/1920x200"
+          class="card-img-top"
+          alt="..."
+        />
       </div>
     </section>
+
+    <!-- list articles in their categories -->
+
+    <section class="py-5">
+      <!-- top text -->
+      <div class="container">
+        <div class="text-center">
+          <a href="">
+            <h2 class="section-heading text-uppercase">Relationship</h2>
+          </a>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div class="container mt-3">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+          <div class="col-md-8">
+            <img class="img-fluid" src="http://placehold.it/750x400" alt="" />
+          </div>
+          <div class="col-md-4">
+            <h3 class="my-3">Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              viverra euismod odio, gravida pellentesque urna varius vitae. Sed
+              dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris
+              ultricies, justo eu convallis placerat, felis enim.
+            </p>
+          </div>
+        </div>
+        <!-- Related Projects Row -->
+        <div class="row">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This card has supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This card has even longer
+                    content than the first to show that equal height action.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <section class="py-5">
+      <!-- top text -->
+      <div class="container">
+        <div class="text-center">
+          <a href="">
+            <h2 class="section-heading text-uppercase">Beauty</h2>
+          </a>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div class="container mt-3">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+          <div class="col-md-8">
+            <img class="img-fluid" src="http://placehold.it/750x400" alt="" />
+          </div>
+          <div class="col-md-4">
+            <h3 class="my-3">Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              viverra euismod odio, gravida pellentesque urna varius vitae. Sed
+              dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris
+              ultricies, justo eu convallis placerat, felis enim.
+            </p>
+          </div>
+        </div>
+        <!-- Related Projects Row -->
+        <div class="row">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This card has supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This card has even longer
+                    content than the first to show that equal height action.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <section class="py-5">
+      <!-- top text -->
+      <div class="container">
+        <div class="text-center">
+          <a href="">
+            <h2 class="section-heading text-uppercase">Entertainment</h2>
+          </a>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div class="container mt-3">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+          <div class="col-md-8">
+            <img class="img-fluid" src="http://placehold.it/750x400" alt="" />
+          </div>
+          <div class="col-md-4">
+            <h3 class="my-3">Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              viverra euismod odio, gravida pellentesque urna varius vitae. Sed
+              dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris
+              ultricies, justo eu convallis placerat, felis enim.
+            </p>
+          </div>
+        </div>
+        <!-- Related Projects Row -->
+        <div class="row">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This card has supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This card has even longer
+                    content than the first to show that equal height action.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <section class="py-5">
+      <!-- top text -->
+      <div class="container">
+        <div class="text-center">
+          <a href="">
+            <h2 class="section-heading text-uppercase">Tours & Travel</h2>
+          </a>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div class="container mt-3">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+          <div class="col-md-8">
+            <img class="img-fluid" src="http://placehold.it/750x400" alt="" />
+          </div>
+          <div class="col-md-4">
+            <h3 class="my-3">Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              viverra euismod odio, gravida pellentesque urna varius vitae. Sed
+              dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris
+              ultricies, justo eu convallis placerat, felis enim.
+            </p>
+          </div>
+        </div>
+        <!-- Related Projects Row -->
+        <div class="row">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This card has supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This card has even longer
+                    content than the first to show that equal height action.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <section class="py-5">
+      <!-- top text -->
+      <div class="container">
+        <div class="text-center">
+          <a href="">
+            <h2 class="section-heading text-uppercase">Health / Wealth</h2>
+          </a>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div class="container mt-3">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+          <div class="col-md-8">
+            <img class="img-fluid" src="http://placehold.it/750x400" alt="" />
+          </div>
+          <div class="col-md-4">
+            <h3 class="my-3">Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              viverra euismod odio, gravida pellentesque urna varius vitae. Sed
+              dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris
+              ultricies, justo eu convallis placerat, felis enim.
+            </p>
+          </div>
+        </div>
+        <!-- Related Projects Row -->
+        <div class="row">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This card has supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This card has even longer
+                    content than the first to show that equal height action.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <section class="py-5">
+      <!-- top text -->
+      <div class="container">
+        <div class="text-center">
+          <a href="">
+            <h2 class="section-heading text-uppercase">Food</h2>
+          </a>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div class="container mt-3">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+          <div class="col-md-8">
+            <img class="img-fluid" src="http://placehold.it/750x400" alt="" />
+          </div>
+          <div class="col-md-4">
+            <h3 class="my-3">Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              viverra euismod odio, gravida pellentesque urna varius vitae. Sed
+              dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris
+              ultricies, justo eu convallis placerat, felis enim.
+            </p>
+          </div>
+        </div>
+        <!-- Related Projects Row -->
+        <div class="row">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This card has supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 border-0">
+                <img
+                  src="http://placehold.it/500x300"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This card has even longer
+                    content than the first to show that equal height action.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <!-- ad section -->
+    <section class="container">
+      <div class="card border-0">
+        <img
+          src="https://source.unsplash.com/oRs6zblNSCs/1920x200"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
+    </section>
+
+    {% include 'includes/_footer.html' %}
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
