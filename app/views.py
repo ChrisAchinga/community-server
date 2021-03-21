@@ -119,6 +119,18 @@ def TestLanding(request):
     large_add = largeAdd.objects.all()
     tags = Tag.objects.all()[:5]
     featured_articles = Article.objects.filter(article_feature='featured').order_by('-date')
-    news = News.objects.filter(news_feature='featured').order_by('-date')
+    news = News.objects.filter(news_feature='featured').order_by('-date')[:3]
     context = {'tags':tags, 'featured_articles':featured_articles, 'news':news, 'small_add':small_add, 'large_add':large_add}
     return render(request, 'new_index.html', context)
+
+# terms and conditions
+def TermsView(request):
+    return render(request, 'terms.html')
+
+# privacy policy
+def PolicyView(request):
+    return render(request, 'policy.html')
+
+# procedure for purchasing an issue
+def ProcedureView(request):
+    return render(request, 'buying-process.html')

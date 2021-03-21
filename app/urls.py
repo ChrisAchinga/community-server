@@ -25,4 +25,7 @@ urlpatterns = [
     path('articles/all', views.ArticleList, name='all-articles'),
     path('news/all', views.NewsList, name='all-news'),
     path('home/', views.TestLanding, name='home-new'),
+    path('terms-and-conditions/', views.TermsView, name='terms'),
+    path('privacy-policy/', views.PolicyView, name='policy'),
+    path('buying-an-issue/', views.ProcedureView, name='procedure'),
 ]

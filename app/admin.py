@@ -6,12 +6,6 @@ admin.site.site_header = 'Coast Woman Magazine'
 admin.site.site_title = 'Coast Woman'
 admin.site.index_title = 'Coast Woman Admin'
 
-# Tags admin
-class TagAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    search_fields = ['name']
-    prepopulated_fields = {'slug': ('name',)}
-admin.site.register(Tag, TagAdmin)
 
 # magazine issue admin
 class MagazineAdmin(admin.ModelAdmin):

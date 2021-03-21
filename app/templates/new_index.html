@@ -122,67 +122,37 @@
             </p>
           </div>
         </div>
+
         <!-- Related Projects Row -->
         <div class="row">
           <div class="row row-cols-1 row-cols-md-3 g-4">
+              
+            {% for new in news %}
             <div class="col">
+              <a href="{% url 'news-read' new.slug %}" class="text-black stretched-link">
               <div class="card h-100 border-0">
                 <img
-                  src="http://placehold.it/500x300"
+                  src="{{new.image.url}}"
+                  width="500"
+                  height="300"
                   class="card-img-top"
                   alt="..."
-                />
+                />                               
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">{{new.title}}</h5>
                   <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                    {{new.description | slice:100 | safe}}
                   </p>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted">Last updated 3 mins ago</small>
+                  <small class="text-muted">{{new.date}}</small>
                 </div>
               </div>
+            </a>
             </div>
-            <div class="col">
-              <div class="card h-100 border-0">
-                <img
-                  src="http://placehold.it/500x300"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This card has supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100 border-0">
-                <img
-                  src="http://placehold.it/500x300"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This card has even longer
-                    content than the first to show that equal height action.
-                  </p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-              </div>
+            {% endfor %}
+            <div class="container align-center mt-3">
+              <a class="btn btn--stroke h-full-width" href="{% url 'news' %}">More Updates</a>
             </div>
           </div>
         </div>
@@ -299,6 +269,17 @@
       <!-- /.container -->
     </section>
 
+    <!-- ad section -->
+    <section class="container">
+      <div class="card border-0">
+        <img
+          src="https://source.unsplash.com/oRs6zblNSCs/1920x200"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
+    </section>
+
     <section class="py-5">
       <!-- top text -->
       <div class="container">
@@ -392,6 +373,17 @@
         <!-- /.row -->
       </div>
       <!-- /.container -->
+    </section>
+
+    <!-- ad section -->
+    <section class="container">
+      <div class="card border-0">
+        <img
+          src="https://source.unsplash.com/oRs6zblNSCs/1920x200"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
     </section>
 
     <section class="py-5">
@@ -489,6 +481,17 @@
       <!-- /.container -->
     </section>
 
+    <!-- ad section -->
+    <section class="container">
+      <div class="card border-0">
+        <img
+          src="https://source.unsplash.com/oRs6zblNSCs/1920x200"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
+    </section>
+
     <section class="py-5">
       <!-- top text -->
       <div class="container">
@@ -582,6 +585,17 @@
         <!-- /.row -->
       </div>
       <!-- /.container -->
+    </section>
+
+    <!-- ad section -->
+    <section class="container">
+      <div class="card border-0">
+        <img
+          src="https://source.unsplash.com/oRs6zblNSCs/1920x200"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
     </section>
 
     <section class="py-5">

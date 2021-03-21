@@ -2,28 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 
-# Tags
-# delete this and replace with new models
 class Tag(models.Model):
-    name = models.CharField('Tag Name', max_length=100, unique=True)
-    cover_image = models.ImageField('Cover Photo', upload_to='images/', null=True, blank=True)
-    slug = models.SlugField(max_length=100, unique=True)
-    description = RichTextField('Tag Description')
-
-    class Meta:
-        verbose_name = 'Tags'
-        verbose_name_plural = verbose_name
-    
-    def __str__(self):
-       return self.name
-       
-    @property
-    def imageURL(self):
-        try:
-            url = self.cover_image.url
-        except:
-            url = ''
-        return url
+    pass
 
 # magazine issue    
 class Magazine(models.Model):
