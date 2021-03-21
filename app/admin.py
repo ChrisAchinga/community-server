@@ -6,13 +6,7 @@ admin.site.site_header = 'Coast Woman Magazine'
 admin.site.site_title = 'Coast Woman'
 admin.site.index_title = 'Coast Woman Admin'
 
-
-# magazine issue admin
-class MagazineAdmin(admin.ModelAdmin):
-    list_display = ('name', 'issue_date',)
-    search_fields = ['name']
-    prepopulated_fields = {'slug': ('name',)}
-admin.site.register(Magazine, MagazineAdmin)
+admin.site.register(Tag)
 
 # News admin
 class NewsAdmin(admin.ModelAdmin):
@@ -23,9 +17,8 @@ admin.site.register(News, NewsAdmin)
 
 # Article admin
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'magazine', 'author', 'tag')
+    list_display = ('title', 'author', 'tag')
     search_fields = ['title']
-    prepopulated_fields = {'slug': ('title',)}
 admin.site.register(Article, ArticleAdmin)
 
 # image admin

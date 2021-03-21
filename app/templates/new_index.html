@@ -110,49 +110,59 @@
         <!-- Portfolio Item Row -->
         <div class="row">
           <div class="col-md-8">
-            <img class="img-fluid" src="http://placehold.it/750x400" alt="" />
+            <img
+              class="img-fluid"
+              src="{{latest_news.image.url}}"
+              alt="{{latest_news.title}}"
+              width="750"
+              height="400"
+            />
           </div>
           <div class="col-md-4">
-            <h3 class="my-3">Title</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              viverra euismod odio, gravida pellentesque urna varius vitae. Sed
-              dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris
-              ultricies, justo eu convallis placerat, felis enim.
-            </p>
+            <a
+              href="{% url 'news-read' latest_news.slug %}"
+              class="text-black stretched-link"
+            >
+              <h3 class="my-3">{{latest_news.title}}</h3>
+              <p>{{latest_news.body | slice:100 | safe}}</p>
+            </a>
           </div>
         </div>
 
         <!-- Related Projects Row -->
         <div class="row">
           <div class="row row-cols-1 row-cols-md-3 g-4">
-              
             {% for new in news %}
             <div class="col">
-              <a href="{% url 'news-read' new.slug %}" class="text-black stretched-link">
-              <div class="card h-100 border-0">
-                <img
-                  src="{{new.image.url}}"
-                  width="500"
-                  height="300"
-                  class="card-img-top"
-                  alt="..."
-                />                               
-                <div class="card-body">
-                  <h5 class="card-title">{{new.title}}</h5>
-                  <p class="card-text">
-                    {{new.description | slice:100 | safe}}
-                  </p>
+              <a
+                href="{% url 'news-read' new.slug %}"
+                class="text-black stretched-link"
+              >
+                <div class="card h-100 border-0">
+                  <img
+                    src="{{new.image.url}}"
+                    width="500"
+                    height="300"
+                    class="card-img-top"
+                    alt="{{new.title}}"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">{{new.title}}</h5>
+                    <p class="card-text">
+                      {{new.description | slice:100 | safe}}
+                    </p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">{{new.date}}</small>
+                  </div>
                 </div>
-                <div class="card-footer">
-                  <small class="text-muted">{{new.date}}</small>
-                </div>
-              </div>
-            </a>
+              </a>
             </div>
             {% endfor %}
             <div class="container align-center mt-3">
-              <a class="btn btn--stroke h-full-width" href="{% url 'news' %}">More Updates</a>
+              <a class="btn btn--stroke h-full-width" href="{% url 'news' %}"
+                >More Updates</a
+              >
             </div>
           </div>
         </div>

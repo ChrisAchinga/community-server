@@ -17,7 +17,7 @@ urlpatterns = [
     path('news/<slug:slug>/', views.NewsReadView.as_view(), name='news-read'),
     # articles
     path('articles/', views.AllArticlesPage, name='articles'),
-    path('article/<slug:slug>/', views.ArticleReadView.as_view(), name='article-read'),
+    path('article/<int:pk>/', views.ArticleReadView.as_view(), name='article-read'),
     # pricing 
     path('pricing/', views.Pricing, name='pricing'),
 
@@ -28,4 +28,5 @@ urlpatterns = [
     path('terms-and-conditions/', views.TermsView, name='terms'),
     path('privacy-policy/', views.PolicyView, name='policy'),
     path('buying-an-issue/', views.ProcedureView, name='procedure'),
+    path('create-article/', views.AddArticle, name='new-article'),
 ]
