@@ -7,7 +7,7 @@ urlpatterns = [
     path('about/', views.AboutPage, name='about'),
     # tags urls
     path('tags/', views.TagList, name='tags'),
-    path('tag/<int:pk>/', views.TagView, name='tag-detail'),
+    path('tag/<str:cats>/', views.TagView, name='tag-detail'),
     # images urls
     path('images/', views.ImageList, name='images'),
     # magazine issue urls

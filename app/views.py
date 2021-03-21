@@ -110,9 +110,10 @@ def NewsList(request):
     context = {'news':news, 'tags':tags, 'small_add':small_add, 'large_add':large_add}
     return render(request, 'news/new_list.html', context)
 
-def TagView(request, pk):
-    tag_posts = Article.objects.get(id=pk)
-    context = {'tag_posts':tag_posts}
+def TagView(request, cats):
+    cat = str(cats)
+    tag_posts = Article.objects.filter(tag__name=cat)
+    context = {'cat':cat, 'tag_posts':tag_posts}
     return render(request, 'tags/details.html', context)
 
 # landing page view
