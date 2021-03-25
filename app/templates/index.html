@@ -1,157 +1,221 @@
-{% extends 'layouts/index.html' %} {% load static %} {% block title %} Coast
-Woman | Home {% endblock %} {% block content %} {% include 'includes/nav.html' %} {% include 'includes/main_header.html' %}
-<!-- Call To Action-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoastWoman Magazine</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/new-styles.css' %}" />
+    <style>
+      .carousel-item {
+        height: 65vh;
+        min-height: 350px;
+        background: no-repeat center center scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    {% include 'includes/_header.html' %}
 
-
-<!-- main tals -->
-<div class="container">
-  <!-- Portfolio Item Heading -->
-  <h1 class="my-4">
-    Coast Woman
-    <small>Women Spreading Their Wings</small>
-  </h1>
-
-  
-
-  <!-- Related Projects Row -->
-  <h3 class="my-4">Top Pics</h3>
-
-  <div class="row">
-    <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-right">
-      <a href="#">
-        <img
-          class="img-fluid"
-          style="object-fit: cover"
-          src="{% static 'img/cw/001.png' %}"
-          alt=""
-        />
-      </a>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-right">
-      <a href="#">
-        <img
-          class="img-fluid"
-          style="object-fit: cover"
-          src="{% static 'img/cw/005.png' %}"
-          alt=""
-        />
-      </a>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-right">
-      <a href="#">
-        <img
-          class="img-fluid"
-          style="object-fit: cover"
-          src="{% static 'img/cw/008.png' %}"
-          alt=""
-        />
-      </a>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-right">
-      <a href="#">
-        <img
-          class="img-fluid"
-          style="object-fit: cover"
-          src="{% static 'img/cw/015.png' %}"
-          alt=""
-        />
-      </a>
-    </div>
-  </div>
-  <!-- /.row -->
-</div>
-
-
-<!-- News Updates sesion-->
-<!-- News Updates sesion-->
-<section class="page-section" id="about">
-  <div class="container">
-    <div class="text-center">
-      <h2 class="section-heading text-uppercase">News Updates</h2>
-      <h3 class="section-subheading text-muted">
-        Catch What's happening Now on Updates
-      </h3>
-    </div>
-
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for new in news %}
-        <div class="col">
-        <div class="card m-3">
-          <img src="{{new.image.url}}" class="card-img-top" alt="..." style="height: 100%; width: 100%; object-fit: cover;" />
-          <div class="card-body">
-            <a href="{% url 'news-read' new.slug %}" class="stretched-link text-dark text-decoration-none">
-              <h5 class="card-title">{{new.title}}</h5>
-              <p class="card-text">{{new.description | slice:100 | safe}}</p>
+    <header>
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-ride="carousel"
+      >
+        <ol class="carousel-indicators">
+          <li
+            data-target="#carouselExampleIndicators"
+            data-slide-to="0"
+            class="active"
+          ></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div
+            class="carousel-item active"
+            style="background-image: url('../static/landing/1.jpg')"
+          ></div>
+          <!-- Slide Two - Set the background image for this slide in the line below -->
+          <div
+            class="carousel-item"
+            style="background-image: url('../static/landing/2.jpg')"
+          ></div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </header>
+    <!-- Page Content -->
+    <section class="py-5">
+      <!-- top text -->
+      <div class="container">
+        <div class="text-center">
+          <a href="{% url 'news' %}"
+            ><h2 class="section-heading text-uppercase">News Updates</h2></a
+          >
+          <h3 class="section-subheading text-muted">
+            Catch What's happening Now on Updates
+          </h3>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div class="container mt-3">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+          <div class="col-md-8">
+            <img
+              class="img-fluid"
+              src="{{latest_news.image.url}}"
+              alt="{{latest_news.title}}"
+              width="750"
+              height="400"
+            />
+          </div>
+          <div class="col-md-4">
+            <a
+              href="{% url 'news-read' latest_news.slug %}"
+              class="text-black stretched-link"
+            >
+              <h3 class="my-3">{{latest_news.title}}</h3>
+              <p>{{latest_news.body | slice:100 | safe}}</p>
             </a>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">{{new.date}}</small>
-          </div>
         </div>
-      </div>
-        {% endfor %}
-    </div>
-  </div>
-</section>
 
-<!-- Featured Articles -->
-<section class="page-section" id="top-stories">
-  <div class="container">
-    <!-- Page Heading -->
-    <h1 class="my-4">
-      Featured Articles
-      <small class="body-text">By Coast Woman</small>
-    </h1>
-
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      {% for article in featured_articles %}
-      <div class="col">
-        <div class="card shadow-sm">
-          <img
-          src="{{article.image.url}}"
-          class="card-img-top"
-          alt="..."
-          style="height: 100%; width: 100%; object-fit: cover;"
-        />
-        <a href="{% url 'article-read' article.slug %}" class="stretched-link text-dark text-decoration-none">
-          <div class="card-body">
-            <h5 class="card-title">{{article.title}}</h5>
-            <p class="card-text">{{article.body | slice:100 | safe}}</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <small class="text-muted">{{article.date}}</small>
+        <!-- Related Projects Row -->
+        <div class="row">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for new in news %}
+            <div class="col">
+              <a
+                href="{% url 'news-read' new.slug %}"
+                class="text-black stretched-link"
+              >
+                <div class="card h-100 border-0">
+                  <img
+                    src="{{new.image.url}}"
+                    width="500"
+                    height="300"
+                    class="card-img-top"
+                    alt="{{new.title}}"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">{{new.title}}</h5>
+                    <p class="card-text">
+                      {{new.description | slice:100 | safe}}
+                    </p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">{{new.date}}</small>
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+            <div class="container align-center mt-3">
+              <a class="btn btn--stroke h-full-width" href="{% url 'news' %}"
+                >More Updates</a
+              >
             </div>
           </div>
-        </a>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <!-- ad section -->
+    <section class="container">
+      <div class="card border-0">
+        <img
+          src="https://source.unsplash.com/oRs6zblNSCs/1920x200"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="row">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          {% for article in featured_articles %}
+          <div class="col">
+            <div class="card h-100 border-0">
+              <img
+                src="{{article.image.url}}"
+                class="card-img-top"
+                width="500"
+                height="300"
+                alt="{{article.title}}"
+              />
+              <div class="card-body">
+                <a href="{% url 'article-read' article.pk %}">
+                  <h5 class="card-title">{{article.title}}</h5>
+                  <p class="card-text">
+                    {{article.body | slice:100 | safe}} ...
+                  </p>
+                </a>
+                {% if article.tag %}
+                <code
+                  ><a href="{% url 'tag-detail' article.tag %}"
+                    >{{article.tag}}</a
+                  ></code
+                >
+                {% else %}
+                <code>general</code>
+                {% endif %}
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">{{article.date}}</small>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
         </div>
       </div>
-      {% endfor %}
-    </div>
-    <!-- /.row -->
-  </div>
-  <!-- /.container -->
-</section>
+    </section>
 
-
-{% include 'includes/video.html' %}
-
-<div class="container">
-  <div class="row">
-    {% for ad in small_add %}
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 shadow">
-        <img src="{{ad.image.url}}" class="card-img-top" alt="..." />
-        <div class="card-body text-center">
-          <h5 class="card-title mb-0">{{ad.name}}</h5>
-          
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  <!-- /.row -->
-</div>
-
-{% include 'includes/footer.html' %} {% endblock content %}
+    {% include 'includes/_footer.html' %}
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

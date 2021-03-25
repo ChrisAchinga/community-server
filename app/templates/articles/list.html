@@ -75,7 +75,14 @@
                                 <p>
                                     {{article.Description}}
                                 </p>
-                                <code>{{article.tag}}</code>
+                                
+                                {% if article.tag %}
+                                    <code><a href="{% url 'tag-detail' article.tag %}">{{article.tag}}</a></code>
+                                {% else %}
+                                    <code>general</code>
+                                {% endif %}
+                                    
+                                
                             </div>
                             <a class="entry__more-link" href="{% url 'article-read' article.pk %}">Full Story</a>
                         </div> <!-- end entry__text -->

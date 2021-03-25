@@ -1,8 +1,8 @@
 {% load static %}
 <header class="s-header s-header--opaque">
   <div class="s-header__logo">
-    <a class="s-header__nav" style="color: aliceblue;" href="{% url 'home' %}">
-      Coast Woman 
+    <a class="s-header__nav" style="color: aliceblue" href="{% url 'home' %}">
+      Coast Woman
     </a>
   </div>
 
@@ -14,6 +14,14 @@
         <li><a href="{% url 'home' %}" title="">Home</a></li>
         <li class="current">
           <a href="{% url 'articles' %}" title="">Articles</a>
+        </li>
+        <li class="has-children">
+          <a href="#0" title="">Tags</a>
+          <ul class="sub-menu">
+            {% for tag in tags %}
+              <li><a href="{% url 'tag-detail' tag %}">{{tag.name}}</a></li>
+            {% endfor %}
+          </ul>
         </li>
         <li><a href="{% url 'news' %}" title="">News</a></li>
       </ul>

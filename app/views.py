@@ -9,10 +9,11 @@ from django.shortcuts import redirect
 def LandingPage(request):
     small_add = smallAdd.objects.all()
     large_add = largeAdd.objects.all()
-    tags = Tag.objects.all()[:5]
+    tags = Tag.objects.all()
     featured_articles = Article.objects.filter(article_feature='featured').order_by('-date')
-    news = News.objects.filter(news_feature='featured').order_by('-date')
-    context = {'tags':tags, 'featured_articles':featured_articles, 'news':news, 'small_add':small_add, 'large_add':large_add}
+    latest_news = News.objects.order_by('-id')[0]
+    news = News.objects.filter(news_feature='featured').order_by('-date')[:3]
+    context = {'tags':tags, 'featured_articles':featured_articles, 'news':news, 'small_add':small_add, 'large_add':large_add, 'latest_news':latest_news}
     return render(request, 'index.html', context)
 
 # about page view
@@ -112,15 +113,16 @@ def NewsList(request):
 
 def TagView(request, cats):
     cat = str(cats)
+    tags = Tag.objects.all()
     tag_posts = Article.objects.filter(tag__name=cat)
-    context = {'cat':cat, 'tag_posts':tag_posts}
+    context = {'cat':cat.title(), 'tag_posts':tag_posts, 'tags':tags}
     return render(request, 'tags/details.html', context)
 
 # landing page view
 def TestLanding(request):
     small_add = smallAdd.objects.all()
     large_add = largeAdd.objects.all()
-    tags = Tag.objects.all()[:5]
+    tags = Tag.objects.all()
     featured_articles = Article.objects.filter(article_feature='featured').order_by('-date')
     latest_news = News.objects.order_by('-id')[0]
     news = News.objects.filter(news_feature='featured').order_by('-date')[:3]
