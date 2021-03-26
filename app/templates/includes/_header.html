@@ -19,7 +19,7 @@
           <a href="#0" title="">Tags</a>
           <ul class="sub-menu">
             {% for tag in tags %}
-              <li><a href="{% url 'tag-detail' tag %}">{{tag.name}}</a></li>
+              <li><a href="{% url 'tag-detail' tag|slugify %}">{{tag.name}}</a></li>
             {% endfor %}
           </ul>
         </li>

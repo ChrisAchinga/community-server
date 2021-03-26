@@ -188,7 +188,7 @@
                 </a>
                 {% if article.tag %}
                 <code
-                  ><a href="{% url 'tag-detail' article.tag %}"
+                  ><a href="{% url 'tag-detail' article.tag|slugify %}"
                     >{{article.tag}}</a
                   ></code
                 >

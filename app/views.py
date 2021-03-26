@@ -114,8 +114,8 @@ def NewsList(request):
 def TagView(request, cats):
     cat = str(cats)
     tags = Tag.objects.all()
-    tag_posts = Article.objects.filter(tag__name=cat)
-    context = {'cat':cat.title(), 'tag_posts':tag_posts, 'tags':tags}
+    tag_posts = Article.objects.filter(tag__name=cat.replace('-', ' ' ))
+    context = {'cat':cat.title().replace('-', ' ' ), 'tag_posts':tag_posts, 'tags':tags}
     return render(request, 'tags/details.html', context)
 
 # landing page view
