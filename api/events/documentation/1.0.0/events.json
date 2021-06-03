@@ -1,19 +1,18 @@
 {
   "paths": {
-    "/board-members": {
+    "/events": {
       "get": {
         "deprecated": false,
-        "description": "Find all the board-members's records",
+        "description": "Find all the events's records",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Events"
                   }
                 }
               }
@@ -52,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Events"
         ],
         "parameters": [
           {
@@ -195,18 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new board-members record",
+        "description": "Create a new events record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Events"
                 }
               }
             }
@@ -244,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Events"
         ],
         "requestBody": {
           "description": "",
@@ -252,26 +247,26 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBoard-members"
+                "$ref": "#/components/schemas/NewEvents"
               }
             }
           }
         }
       }
     },
-    "/board-members/count": {
+    "/events/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of board-members documents",
+        "description": "Retrieve the numver of events documents",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
-                      "type": "string"
+                    "count": {
+                      "type": "integer"
                     }
                   }
                 }
@@ -311,26 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Events"
         ],
         "parameters": []
       }
     },
-    "/board-members/{id}": {
+    "/events/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one board-members record",
+        "description": "Find one events record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Events"
                 }
               }
             }
@@ -368,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Events"
         ],
         "parameters": [
           {
@@ -385,18 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single board-members record",
+        "description": "Update a single events record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Events"
                 }
               }
             }
@@ -434,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Events"
         ],
         "requestBody": {
           "description": "",
@@ -442,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBoard-members"
+                "$ref": "#/components/schemas/NewEvents"
               }
             }
           }
@@ -462,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single board-members record",
+        "description": "Delete a single events record",
         "responses": {
           "200": {
-            "description": "deletes a single board-members based on the ID supplied",
+            "description": "deletes a single events based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -508,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Events"
         ],
         "parameters": [
           {
@@ -527,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Board-members": {
+      "Events": {
         "required": [
           "id"
         ],
@@ -535,87 +522,131 @@
           "id": {
             "type": "string"
           },
-          "fullName": {
+          "title": {
             "type": "string"
           },
-          "profilePic": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "alternativeText": {
-                  "type": "string"
-                },
-                "caption": {
-                  "type": "string"
-                },
-                "width": {
-                  "type": "integer"
-                },
-                "height": {
-                  "type": "integer"
-                },
-                "formats": {
-                  "type": "object"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "number"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "previewUrl": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "provider_metadata": {
-                  "type": "object"
-                },
-                "related": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
+          "date": {
+            "type": "string",
+            "format": "date"
           },
-          "position": {
+          "startTime": {
             "type": "string"
           },
-          "memberProfile": {
+          "endTime": {
             "type": "string"
           },
           "slug": {
             "type": "uid"
+          },
+          "eventCover": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "space": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "maxCapacity": {
+                "type": "integer"
+              },
+              "description": {
+                "type": "string"
+              },
+              "coverImage": {
+                "type": "string"
+              },
+              "photos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "slug": {
+                "type": "uid"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -623,19 +654,29 @@
           }
         }
       },
-      "NewBoard-members": {
+      "NewEvents": {
         "properties": {
-          "fullName": {
+          "title": {
             "type": "string"
           },
-          "position": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "startTime": {
             "type": "string"
           },
-          "memberProfile": {
+          "endTime": {
             "type": "string"
           },
           "slug": {
             "type": "uid"
+          },
+          "description": {
+            "type": "string"
+          },
+          "space": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -651,5 +692,9 @@
       }
     }
   },
-  "tags": []
+  "tags": [
+    {
+      "name": "Events"
+    }
+  ]
 }

@@ -1,19 +1,18 @@
 {
   "paths": {
-    "/board-members": {
+    "/spaces": {
       "get": {
         "deprecated": false,
-        "description": "Find all the board-members's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Space"
                   }
                 }
               }
@@ -52,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Space"
         ],
         "parameters": [
           {
@@ -195,18 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new board-members record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Space"
                 }
               }
             }
@@ -244,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Space"
         ],
         "requestBody": {
           "description": "",
@@ -252,26 +247,26 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBoard-members"
+                "$ref": "#/components/schemas/NewSpace"
               }
             }
           }
         }
       }
     },
-    "/board-members/count": {
+    "/spaces/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of board-members documents",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
-                      "type": "string"
+                    "count": {
+                      "type": "integer"
                     }
                   }
                 }
@@ -311,26 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Space"
         ],
         "parameters": []
       }
     },
-    "/board-members/{id}": {
+    "/spaces/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one board-members record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Space"
                 }
               }
             }
@@ -368,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Space"
         ],
         "parameters": [
           {
@@ -385,18 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single board-members record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Space"
                 }
               }
             }
@@ -434,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Space"
         ],
         "requestBody": {
           "description": "",
@@ -442,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBoard-members"
+                "$ref": "#/components/schemas/NewSpace"
               }
             }
           }
@@ -462,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single board-members record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single board-members based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -508,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Space"
         ],
         "parameters": [
           {
@@ -527,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Board-members": {
+      "Space": {
         "required": [
           "id"
         ],
@@ -535,10 +522,83 @@
           "id": {
             "type": "string"
           },
-          "fullName": {
+          "name": {
             "type": "string"
           },
-          "profilePic": {
+          "maxCapacity": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "coverImage": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "photos": {
             "type": "array",
             "items": {
               "required": [
@@ -608,12 +668,6 @@
               }
             }
           },
-          "position": {
-            "type": "string"
-          },
-          "memberProfile": {
-            "type": "string"
-          },
           "slug": {
             "type": "uid"
           },
@@ -623,15 +677,15 @@
           }
         }
       },
-      "NewBoard-members": {
+      "NewSpace": {
         "properties": {
-          "fullName": {
+          "name": {
             "type": "string"
           },
-          "position": {
-            "type": "string"
+          "maxCapacity": {
+            "type": "integer"
           },
-          "memberProfile": {
+          "description": {
             "type": "string"
           },
           "slug": {
@@ -651,5 +705,9 @@
       }
     }
   },
-  "tags": []
+  "tags": [
+    {
+      "name": "Space"
+    }
+  ]
 }

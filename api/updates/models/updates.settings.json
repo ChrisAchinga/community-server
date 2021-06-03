@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "updates",
   "info": {
-    "name": "Categories",
-    "description": ""
+    "name": "Updates"
   },
   "options": {
     "increments": true,
@@ -12,12 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true,
-      "unique": true
+    "title": {
+      "type": "string"
     },
-    "coverPhoto": {
+    "writer": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "coverImage": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -32,11 +33,7 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "name"
-    },
-    "blogs": {
-      "via": "categories",
-      "collection": "blog"
+      "targetField": "title"
     }
   }
 }

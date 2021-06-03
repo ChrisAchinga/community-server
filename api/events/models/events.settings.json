@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "events",
   "info": {
-    "name": "Categories",
-    "description": ""
+    "name": "Events"
   },
   "options": {
     "increments": true,
@@ -12,12 +11,23 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true,
-      "unique": true
+    "title": {
+      "type": "string"
     },
-    "coverPhoto": {
+    "date": {
+      "type": "date"
+    },
+    "startTime": {
+      "type": "time"
+    },
+    "endTime": {
+      "type": "time"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "eventCover": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -30,13 +40,8 @@
     "description": {
       "type": "richtext"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
-    },
-    "blogs": {
-      "via": "categories",
-      "collection": "blog"
+    "space": {
+      "model": "space"
     }
   }
 }

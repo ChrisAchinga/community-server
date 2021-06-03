@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "board_members",
   "info": {
-    "name": "Board Members"
+    "name": "Board Members",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -29,6 +30,10 @@
     },
     "memberProfile": {
       "type": "richtext"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "fullName"
     }
   }
 }

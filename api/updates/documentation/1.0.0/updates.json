@@ -1,19 +1,18 @@
 {
   "paths": {
-    "/board-members": {
+    "/updates": {
       "get": {
         "deprecated": false,
-        "description": "Find all the board-members's records",
+        "description": "Find all the updates's records",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve updates document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Updates"
                   }
                 }
               }
@@ -52,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Updates"
         ],
         "parameters": [
           {
@@ -195,18 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new board-members record",
+        "description": "Create a new updates record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve updates document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Updates"
                 }
               }
             }
@@ -244,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Updates"
         ],
         "requestBody": {
           "description": "",
@@ -252,26 +247,26 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBoard-members"
+                "$ref": "#/components/schemas/NewUpdates"
               }
             }
           }
         }
       }
     },
-    "/board-members/count": {
+    "/updates/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of board-members documents",
+        "description": "Retrieve the numver of updates documents",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve updates document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
-                      "type": "string"
+                    "count": {
+                      "type": "integer"
                     }
                   }
                 }
@@ -311,26 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Updates"
         ],
         "parameters": []
       }
     },
-    "/board-members/{id}": {
+    "/updates/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one board-members record",
+        "description": "Find one updates record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve updates document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Updates"
                 }
               }
             }
@@ -368,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Updates"
         ],
         "parameters": [
           {
@@ -385,18 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single board-members record",
+        "description": "Update a single updates record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "Retrieve updates document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Updates"
                 }
               }
             }
@@ -434,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Updates"
         ],
         "requestBody": {
           "description": "",
@@ -442,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBoard-members"
+                "$ref": "#/components/schemas/NewUpdates"
               }
             }
           }
@@ -462,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single board-members record",
+        "description": "Delete a single updates record",
         "responses": {
           "200": {
-            "description": "deletes a single board-members based on the ID supplied",
+            "description": "deletes a single updates based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -508,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Updates"
         ],
         "parameters": [
           {
@@ -527,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Board-members": {
+      "Updates": {
         "required": [
           "id"
         ],
@@ -535,83 +522,128 @@
           "id": {
             "type": "string"
           },
-          "fullName": {
+          "title": {
             "type": "string"
           },
-          "profilePic": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "alternativeText": {
-                  "type": "string"
-                },
-                "caption": {
-                  "type": "string"
-                },
-                "width": {
-                  "type": "integer"
-                },
-                "height": {
-                  "type": "integer"
-                },
-                "formats": {
-                  "type": "object"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "number"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "previewUrl": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "provider_metadata": {
-                  "type": "object"
-                },
-                "related": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
+          "writer": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "blogs": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
-          "position": {
-            "type": "string"
+          "coverImage": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           },
-          "memberProfile": {
+          "description": {
             "type": "string"
           },
           "slug": {
@@ -623,15 +655,15 @@
           }
         }
       },
-      "NewBoard-members": {
+      "NewUpdates": {
         "properties": {
-          "fullName": {
+          "title": {
             "type": "string"
           },
-          "position": {
+          "writer": {
             "type": "string"
           },
-          "memberProfile": {
+          "description": {
             "type": "string"
           },
           "slug": {
@@ -651,5 +683,9 @@
       }
     }
   },
-  "tags": []
+  "tags": [
+    {
+      "name": "Updates"
+    }
+  ]
 }

@@ -1,19 +1,18 @@
 {
   "paths": {
-    "/board-members": {
+    "/blogs": {
       "get": {
         "deprecated": false,
-        "description": "Find all the board-members's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Blog"
                   }
                 }
               }
@@ -52,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Blog"
         ],
         "parameters": [
           {
@@ -195,18 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new board-members record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Blog"
                 }
               }
             }
@@ -244,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Blog"
         ],
         "requestBody": {
           "description": "",
@@ -252,26 +247,26 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBoard-members"
+                "$ref": "#/components/schemas/NewBlog"
               }
             }
           }
         }
       }
     },
-    "/board-members/count": {
+    "/blogs/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of board-members documents",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
-                      "type": "string"
+                    "count": {
+                      "type": "integer"
                     }
                   }
                 }
@@ -311,26 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Blog"
         ],
         "parameters": []
       }
     },
-    "/board-members/{id}": {
+    "/blogs/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one board-members record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Blog"
                 }
               }
             }
@@ -368,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Blog"
         ],
         "parameters": [
           {
@@ -385,18 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single board-members record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve board-members document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Blog"
                 }
               }
             }
@@ -434,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Blog"
         ],
         "requestBody": {
           "description": "",
@@ -442,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBoard-members"
+                "$ref": "#/components/schemas/NewBlog"
               }
             }
           }
@@ -462,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single board-members record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single board-members based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -508,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Board-members"
+          "Blog"
         ],
         "parameters": [
           {
@@ -527,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Board-members": {
+      "Blog": {
         "required": [
           "id"
         ],
@@ -535,20 +522,69 @@
           "id": {
             "type": "string"
           },
-          "fullName": {
+          "title": {
             "type": "string"
           },
-          "profilePic": {
+          "body": {
+            "type": "string"
+          },
+          "writer": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "blogs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "categories": {
             "type": "array",
             "items": {
               "required": [
                 "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
+                "name"
               ],
               "properties": {
                 "id": {
@@ -557,46 +593,22 @@
                 "name": {
                   "type": "string"
                 },
-                "alternativeText": {
+                "coverPhoto": {
                   "type": "string"
                 },
-                "caption": {
+                "description": {
                   "type": "string"
                 },
-                "width": {
-                  "type": "integer"
+                "slug": {
+                  "type": "uid"
                 },
-                "height": {
-                  "type": "integer"
+                "blogs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
-                "formats": {
-                  "type": "object"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "number"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "previewUrl": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "provider_metadata": {
-                  "type": "object"
-                },
-                "related": {
+                "published_at": {
                   "type": "string"
                 },
                 "created_by": {
@@ -608,34 +620,28 @@
               }
             }
           },
-          "position": {
-            "type": "string"
-          },
-          "memberProfile": {
-            "type": "string"
-          },
-          "slug": {
-            "type": "uid"
-          },
           "published_at": {
             "type": "string",
             "format": "date-time"
           }
         }
       },
-      "NewBoard-members": {
+      "NewBlog": {
         "properties": {
-          "fullName": {
+          "title": {
             "type": "string"
           },
-          "position": {
+          "body": {
             "type": "string"
           },
-          "memberProfile": {
+          "writer": {
             "type": "string"
           },
-          "slug": {
-            "type": "uid"
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "published_at": {
             "type": "string",
@@ -651,5 +657,9 @@
       }
     }
   },
-  "tags": []
+  "tags": [
+    {
+      "name": "Blog"
+    }
+  ]
 }

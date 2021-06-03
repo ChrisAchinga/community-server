@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "spaces",
   "info": {
-    "name": "Categories",
+    "name": "Space",
     "description": ""
   },
   "options": {
@@ -13,11 +13,15 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string",
-      "required": true,
-      "unique": true
+      "type": "string"
     },
-    "coverPhoto": {
+    "maxCapacity": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "coverImage": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -27,16 +31,19 @@
       "required": false,
       "pluginOptions": {}
     },
-    "description": {
-      "type": "richtext"
+    "photos": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     },
     "slug": {
       "type": "uid",
       "targetField": "name"
-    },
-    "blogs": {
-      "via": "categories",
-      "collection": "blog"
     }
   }
 }
