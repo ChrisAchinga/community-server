@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/blogs": {
+    "/images": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the images's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve images document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Blog"
+                    "$ref": "#/components/schemas/Images"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Blog"
+          "Images"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new images record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve images document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Blog"
+                  "$ref": "#/components/schemas/Images"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Blog"
+          "Images"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBlog"
+                "$ref": "#/components/schemas/NewImages"
               }
             }
           }
         }
       }
     },
-    "/blogs/count": {
+    "/images/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of images documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve images document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Blog"
+          "Images"
         ],
         "parameters": []
       }
     },
-    "/blogs/{id}": {
+    "/images/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one images record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve images document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Blog"
+                  "$ref": "#/components/schemas/Images"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Blog"
+          "Images"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single images record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve images document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Blog"
+                  "$ref": "#/components/schemas/Images"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Blog"
+          "Images"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBlog"
+                "$ref": "#/components/schemas/NewImages"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single images record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single images based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Blog"
+          "Images"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Blog": {
+      "Images": {
         "required": [
           "id"
         ],
@@ -522,54 +522,67 @@
           "id": {
             "type": "string"
           },
-          "title": {
+          "imageCaption": {
             "type": "string"
           },
-          "body": {
-            "type": "string"
-          },
-          "writer": {
+          "image": {
             "required": [
               "id",
-              "username",
-              "email"
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "username": {
+              "name": {
                 "type": "string"
               },
-              "email": {
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
                 "type": "string"
               },
               "provider": {
                 "type": "string"
               },
-              "password": {
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
                 "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmationToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "blogs": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
               },
               "created_by": {
                 "type": "string"
@@ -579,75 +592,16 @@
               }
             }
           },
-          "categories": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "coverPhoto": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "slug": {
-                  "type": "uid"
-                },
-                "blogs": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "slug": {
-            "type": "uid"
-          },
           "published_at": {
             "type": "string",
             "format": "date-time"
           }
         }
       },
-      "NewBlog": {
+      "NewImages": {
         "properties": {
-          "title": {
+          "imageCaption": {
             "type": "string"
-          },
-          "body": {
-            "type": "string"
-          },
-          "writer": {
-            "type": "string"
-          },
-          "categories": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "slug": {
-            "type": "uid"
           },
           "published_at": {
             "type": "string",
@@ -665,7 +619,7 @@
   },
   "tags": [
     {
-      "name": "Blog"
+      "name": "Images"
     }
   ]
 }

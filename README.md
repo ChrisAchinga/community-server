@@ -14,3 +14,7 @@
 9. Space (Community Space) - created
 10. Members (registered community members) -created
 11. Users (platform users/administrative rights)
+
+
+#### Cloudinary For Images: Setup
+
