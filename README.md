@@ -18,3 +18,5 @@
 
 #### Cloudinary For Images: Setup
 
+#### User Details:
+
